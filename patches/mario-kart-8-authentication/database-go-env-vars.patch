@@ -1,5 +1,5 @@
 --- database.go	2024-08-21 15:05:23.809113273 +0200
-+++ database-patched.go	2024-08-21 15:56:09.777331220 +0200
++++ database.go	2024-08-21 15:56:09.777331220 +0200
 @@ -16,7 +16,7 @@
  var mongoCollection *mongo.Collection
  
