@@ -107,7 +107,7 @@ echo "PN_PIKMIN3_POSTGRES_URI=postgres://postgres_pretendo:$postgres_password@po
 echo "PN_MK8_POSTGRES_URI=postgres://postgres_pretendo:$postgres_password@postgres/mk8?sslmode=disable" >>./mario-kart-8.local.env
 
 # Set up Mario Kart 8 Mongo connection
-echo "PN_MK8_POSTGRES_URI=mongodb://mongodb:27017/pretendo_account?replicaSet=rs" >>./mario-kart-8.local.env
+echo "PN_MK8_MONGO_URI=mongodb://mongodb:27017/pretendo_account?replicaSet=rs" >>./mario-kart-8.local.env
 
 # Generate passwords, a gRPC API key, and an AES key for the friends server
 friends_authentication_password=$(generate_password 32)
