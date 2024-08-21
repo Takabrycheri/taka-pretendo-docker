@@ -1,4 +1,4 @@
-name: pretendo-network
+name: taka-pretendo-network
 services:
   mitmproxy-pretendo:
     image: ghcr.io/matthewl246/mitmproxy-pretendo:local
@@ -483,6 +483,39 @@ services:
     env_file:
       - ./environment/pikmin-3.env
       - ./environment/pikmin-3.local.env
+  
+  mario-kart-8-authentication:
+    build: ./repos/mario-kart-8-authentication
+    depends_on:
+      - account
+      - mongodb
+    restart: always
+    ports:
+      # Authentication server
+      - 60002:60002/udp
+    networks:
+      internal:
+    dns: 172.20.0.200
+    env_file:
+      - ./environment/mario-kart-8.env
+      - ./environment/mario-kart-8.local.env
+  
+  mario-kart-8-secure:
+    build: ./repos/mario-kart-8-secure
+    depends_on:
+      - account
+      - mongodb
+      - mario-kart-8-authentication
+    restart: always
+    ports:
+      # Secure server
+      - 60003:60003/udp
+    networks:
+      internal:
+    dns: 172.20.0.200
+    env_file:
+      - ./environment/mario-kart-8.env
+      - ./environment/mario-kart-8.local.env
 
 volumes:
   mitmproxy-pretendo-data:
