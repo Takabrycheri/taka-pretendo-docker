@@ -1,0 +1,11 @@
+--- database.go	2024-08-21 15:05:23.809113273 +0200
++++ database-patched.go	2024-08-21 15:56:09.777331220 +0200
+@@ -16,7 +16,7 @@
+ var mongoCollection *mongo.Collection
+ 
+ func connectMongo() {
+-	mongoClient, _ = mongo.NewClient(options.Client().ApplyURI(os.Getenv("MONGO_URI")))
++	mongoClient, _ = mongo.NewClient(options.Client().ApplyURI(os.Getenv("PN_MK8_MONGO_URI")))
+ 	mongoContext, _ = context.WithTimeout(context.Background(), 10*time.Second)
+ 	_ = mongoClient.Connect(mongoContext)
+ 
